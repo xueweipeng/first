@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">ecfo</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_lesson_fragment">Hello lesson fragment</string>
+    <string name="hello_me_fragment">Hello me fragment</string>
+</resources>

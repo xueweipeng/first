@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.ecfo.activities.MainActivity">
+
+    <com.ycl.tabview.library.TabView
+        android:id="@+id/tabView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#e5b3b1b1"
+        app:imageViewTextViewMargin="2dip"
+        app:tab_imageViewHeight="30dip"
+        app:tab_imageViewWidth="30dip"
+        app:tab_tabViewDefaultPosition="1"
+        app:tab_tabViewGravity="bottom"
+        app:tab_tabViewHeight="52dip"
+        app:tab_textViewSize="12sp"
+        app:tab_textViewSelColor="#E59524">
+    </com.ycl.tabview.library.TabView>
+
+</android.support.constraint.ConstraintLayout>

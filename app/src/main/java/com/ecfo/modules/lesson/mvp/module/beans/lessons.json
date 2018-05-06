@@ -1,0 +1,29 @@
+﻿{
+    "code": 0,
+    "msg": "success",
+    "data": [
+        {
+            "type": "free",
+            "lessons": [
+                {
+                    "name": "免费1",
+                    "desc": "这个免费1课很好",
+                    "pic": "http://baidu.png",
+                    "lessonId": 100,
+                    "price": "199/年",
+                    "activity": "用户问答",
+                    "update_time": "昨天",
+                    "reserve1": 1,
+                    "reserve2": 1
+                },
+                {}
+            ]
+        },
+        {
+            "type": "fee",
+            "lessons": [
+                {}
+            ]
+        }
+    ]
+}
