@@ -1,6 +1,12 @@
 package com.ecfo.modules.lesson.mvp.module;
 
+import com.ecfo.modules.lesson.mvp.module.beans.FreeLesson;
 import com.ecfo.services.BaseApiService;
+
+import java.util.Map;
+
+import rx.Subscriber;
+import rx.Subscription;
 
 
 public class ApiServiceLesson extends BaseApiService {
@@ -13,6 +19,11 @@ public class ApiServiceLesson extends BaseApiService {
         }
     }
 
+    public Subscription getFreeLessons(Subscriber<FreeLesson> subscriber, Map<String, String> para) {
+        return apiService.getFreeLessons(para)
+                .compose(applySchedulers())
+                .subscribe(subscriber);
+    }
 //    //查状态
 //    public Subscription getBikeState(Subscriber<BikeStateBean> subscriber, UCBean entity) {
 //        return apiService.getBikeState(entity)

@@ -1,5 +1,13 @@
 package com.ecfo.modules.lesson.mvp.module;
 
+import com.ecfo.modules.lesson.mvp.module.beans.FreeLesson;
+
+import java.util.Map;
+
+import retrofit2.http.GET;
+import retrofit2.http.QueryMap;
+import rx.Observable;
+
 public interface ApiService {
 
 //    //1.检查车牌号的状态，以及是否是任务车
@@ -23,4 +31,6 @@ public interface ApiService {
 //    Observable<SortResultBean> getSortResult(@QueryMap Map<String, String> map);
 
 
+    @GET("ecfo/free_lessons")
+    Observable<FreeLesson> getFreeLessons(@QueryMap Map<String, String> map);
 }

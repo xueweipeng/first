@@ -10,12 +10,5 @@ public interface LessonView extends MvpView {
     //显示错误
     void showError(String errorMessage);
 
-    //显示堆车地点
-    void showPileAddress(String address);
-
-    //显示某堆车点车辆列表
     void showLessons(final List<FreeLesson> lessons);
-
-    // 更新是否有已装车未提交的数据，用于back键处理
-    void updateBackHandleState(boolean state);
 }

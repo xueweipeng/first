@@ -13,7 +13,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class RetrofitUtils {
     private static final int DEFAULT_TIMEOUT = 5;
-    private static String baseUrl = "https://find.ofo.com/";
+    private static String baseUrl = "https://ecfo.com/";
     private Retrofit retrofit;
     private static class SingletonHolder {
         private static RetrofitUtils INSTANCE = new RetrofitUtils();
