@@ -2,6 +2,15 @@
     <string name="app_name">ecfo</string>
 
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_lesson_fragment">Hello lesson fragment</string>
-    <string name="hello_me_fragment">Hello me fragment</string>
+    <string name="hello_lesson_fragment">这是听课模块</string>
+    <string name="hello_me_fragment">我的模块</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_recommend_fragment">这是推荐模块</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_discovery_fragment">这是发现模块</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
