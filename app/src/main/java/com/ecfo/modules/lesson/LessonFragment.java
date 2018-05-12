@@ -1,7 +1,6 @@
 package com.ecfo.modules.lesson;
 
 import android.content.Context;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -9,6 +8,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 import com.ecfo.R;
 import com.ecfo.modules.lesson.mvp.module.beans.FreeLesson;
@@ -17,16 +17,10 @@ import com.ecfo.modules.lesson.mvp.view.LessonView;
 
 import java.util.List;
 
+import butterknife.BindView;
 import butterknife.ButterKnife;
 
-/**
- * A simple {@link Fragment} subclass.
- * Activities that contain this fragment must implement the
- * {@link LessonFragment.OnFragmentInteractionListener} interface
- * to handle interaction events.
- * Use the {@link LessonFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
+
 public class LessonFragment extends Fragment implements LessonView {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -38,6 +32,9 @@ public class LessonFragment extends Fragment implements LessonView {
     private String mParam2;
 
     private LessonPresenter presenter;
+
+    @BindView(R.id.btnTest)
+    public Button btnTest;
 
 //    private OnFragmentInteractionListener mListener;
 

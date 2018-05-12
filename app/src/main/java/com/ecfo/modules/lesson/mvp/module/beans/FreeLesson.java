@@ -36,23 +36,14 @@ public class FreeLesson {
     }
 
     public static class DataBean {
-        private List<String> succ;
-        private List<String> fail;
+        private List<Lesson> lessons;
 
-        public List<String> getSucc() {
-            return succ;
+        public List<Lesson> getLessons() {
+            return lessons;
         }
 
-        public void setSucc(List<String> succ) {
-            this.succ = succ;
-        }
-
-        public List<String> getFail() {
-            return fail;
-        }
-
-        public void setFail(List<String> fail) {
-            this.fail = fail;
+        public void setLessons(List<Lesson> lessons) {
+            this.lessons = lessons;
         }
     }
 }
