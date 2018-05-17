@@ -31,8 +31,19 @@
 
         <service
             android:name=".play.PlayService"
-            android:enabled="false"
-            android:exported="false"></service>
+            android:enabled="true"
+            android:exported="false" />
+
+        <activity android:name=".play.PlayActivity"></activity>
+        <receiver
+            android:name=".play.PlayNotificationReceiver"
+            android:enabled="true"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="action.music.play"/>
+                <action android:name="action.music.next"/>
+            </intent-filter>
+        </receiver>
     </application>
 
 </manifest>

@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/layout"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/black"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
     android:orientation="horizontal">
 
     <ImageView
@@ -12,82 +11,77 @@
         android:layout_width="70dp"
         android:layout_height="70dp"
         android:layout_gravity="center"
-        android:scaleType="fitXY"
-        />
+        android:scaleType="fitXY" />
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginLeft="10dp"
-        android:layout_weight="1"
-        android:orientation="vertical">
+        android:layout_height="match_parent">
 
         <TextView
             android:id="@+id/tv_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
             android:ellipsize="end"
             android:fadingEdge="horizontal"
             android:fadingEdgeLength="10dp"
             android:singleLine="true"
-            android:textColor="@color/white"
-            android:textSize="16sp"/>
+            android:text="这是播放通知栏标题"
+            android:textSize="16sp" />
 
-        <TextView
-            android:id="@+id/tv_content"
+        <ImageView
+            android:id="@+id/iv_close_play_notification"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/title"
-            android:layout_marginTop="4dp"
-            android:ellipsize="end"
-            android:fadingEdge="horizontal"
-            android:fadingEdgeLength="10dp"
-            android:singleLine="true"
-            android:textColor="@color/white"
-            android:textSize="12sp"/>
-    </LinearLayout>
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:layout_margin="5dp"
+            android:src="@mipmap/notification_close" />
 
+        <LinearLayout
+            android:id="@+id/ll_action"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_title"
+            android:layout_margin="10dp"
+            android:orientation="horizontal">
 
-    <LinearLayout
-        android:id="@+id/ll_action"
-        android:layout_width="wrap_content"
-        android:layout_height="41dp"
-        android:layout_gravity="center"
-        android:layout_marginRight="10dp">
+            <ImageButton
+                android:id="@+id/iv_previous"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_vertical"
+                android:layout_marginRight="10dp"
+                android:layout_weight="1"
+                android:background="@drawable/press_selector"
+                android:scaleType="centerInside"
+                android:src="@mipmap/notification_previous" />
 
-        <ImageButton
-            android:id="@+id/iv_pause"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_gravity="center_vertical"
-            android:layout_marginRight="10dp"
-            android:background="@drawable/press_selector"
-            android:padding="7dp"
-            android:scaleType="centerInside"/>
+            <ImageButton
+                android:id="@+id/iv_pause"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_vertical"
+                android:layout_marginRight="5dp"
+                android:layout_weight="1"
+                android:background="@drawable/press_selector"
+                android:scaleType="centerInside"
+                android:src="@mipmap/notification_play" />
 
-        <ImageButton
-            android:id="@+id/iv_next"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_gravity="center_vertical"
-            android:layout_marginRight="10dp"
-            android:background="@drawable/press_selector"
-            android:padding="7dp"
-            android:scaleType="centerInside"
-            android:src="@mipmap/note_btn_next"/>
+            <ImageButton
+                android:id="@+id/iv_next"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_vertical"
+                android:layout_marginRight="10dp"
+                android:layout_weight="1"
+                android:background="@drawable/press_selector"
+                android:scaleType="centerInside"
+                android:src="@mipmap/notification_next" />
 
-        <ImageButton
-            android:id="@+id/iv_stop"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_gravity="center_vertical"
-            android:layout_marginRight="5dp"
-            android:background="@drawable/press_selector"
-            android:padding="5dp"
-            android:scaleType="centerInside"
-            android:src="@mipmap/notification_close"/>
-    </LinearLayout>
+        </LinearLayout>
 
+    </RelativeLayout>
 
 </LinearLayout>

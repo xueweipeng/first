@@ -66,12 +66,12 @@ public class ecfoApplication extends Application implements Application.Activity
 
     @Override
     public void onActivityStarted(Activity activity) {
-        if (isCurrentRunningForeground == 0) {// front
-            if (mPlayNotification != null) {
-                mPlayNotification.unregisterListener();
-            }
-        }
-        isCurrentRunningForeground++;
+//        if (isCurrentRunningForeground == 0) {// front
+//            if (mPlayNotification != null) {
+//                mPlayNotification.unregisterListener();
+//            }
+//        }
+//        isCurrentRunningForeground++;
     }
 
     private void showNotification() throws RemoteException {
@@ -94,14 +94,14 @@ public class ecfoApplication extends Application implements Application.Activity
 
     @Override
     public void onActivityStopped(Activity activity) {
-        isCurrentRunningForeground--;
-        if (isCurrentRunningForeground == 0) { // back
-            try {
-                showNotification();
-            } catch (RemoteException e) {
-                e.printStackTrace();
-            }
-        }
+//        isCurrentRunningForeground--;
+//        if (isCurrentRunningForeground == 0) { // back
+//            try {
+//                showNotification();
+//            } catch (RemoteException e) {
+//                e.printStackTrace();
+//            }
+//        }
     }
 
     @Override

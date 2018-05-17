@@ -202,7 +202,15 @@ public class PlayService extends Service implements
                 mTimer = null;
             }
         }
+        onStopPlay();
 
+    }
+
+    private void onStopPlay() {
+        Message msg = Message.obtain();
+        msg.what = MUSIC_ACTION_STOP;
+        msg.arg1 = 1;
+        sendBroadcast(MUSIC_ACTION_STOP, msg);
     }
 
     public void seekPlaySong(int progress) {
