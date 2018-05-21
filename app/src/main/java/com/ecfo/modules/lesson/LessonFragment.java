@@ -14,6 +14,7 @@ import com.ecfo.R;
 import com.ecfo.modules.lesson.mvp.module.beans.FreeLesson;
 import com.ecfo.modules.lesson.mvp.presenter.LessonPresenter;
 import com.ecfo.modules.lesson.mvp.view.LessonView;
+import com.ecfo.utils.Util;
 
 import java.util.List;
 
@@ -93,6 +94,9 @@ public class LessonFragment extends Fragment implements LessonView {
         super.onViewCreated(view, savedInstanceState);
         presenter = new LessonPresenter();
         presenter.attachView(this);
+        btnTest.setOnClickListener(view1 -> {
+            Util.startPlayerActivity(getActivity());
+        });
     }
 
     @Override

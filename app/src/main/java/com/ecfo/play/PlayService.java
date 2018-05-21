@@ -57,8 +57,6 @@ public class PlayService extends Service implements
         @Override
         public void action(int action, String datum) throws RemoteException {
             switch (action) {
-
-                ///*******************about play***********************************************/
                 case MUSIC_ACTION_PAUSE:
                     pauseSong();
                     break;
@@ -84,7 +82,6 @@ public class PlayService extends Service implements
                     mMediaPlayer.setVolume(0f, 0f);
                     break;
                 default:
-                    ///*******************about play mode***********************************************/
                     matchPlayMode(action);
                     break;
             }
@@ -150,7 +147,7 @@ public class PlayService extends Service implements
         if (mMediaPlayer != null && mMediaPlayer.isPlaying()) {
             mMediaPlayer.pause();
             MUSIC_CURRENT_ACTION = MUSIC_ACTION_PAUSE;
-            onPausePlay();
+            onPause();
         }
     }
 
@@ -163,10 +160,15 @@ public class PlayService extends Service implements
         play();
     }
 
-    private void onPausePlay() {
+    private void onPause() {
+        Message msg = Message.obtain();
+        msg.what = MUSIC_ACTION_PAUSE;
+        msg.arg1 = 1;
+        sendBroadcast(MUSIC_ACTION_PAUSE, msg);
     }
 
     private void onActionPlay(String datum) {
+        //解析datum为播放列表与当前需要播放的position
 //        if (TextUtils.isEmpty(datum)) {
 //            play();
 //            return;

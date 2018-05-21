@@ -34,14 +34,19 @@
             android:enabled="true"
             android:exported="false" />
 
-        <activity android:name=".play.PlayActivity"></activity>
+        <activity
+            android:name=".play.PlayActivity"
+            android:exported="true"
+            android:theme="@style/Theme.Design.NoActionBar"></activity>
         <receiver
             android:name=".play.PlayNotificationReceiver"
             android:enabled="true"
             android:exported="true">
             <intent-filter>
-                <action android:name="action.music.play"/>
-                <action android:name="action.music.next"/>
+                <action android:name="action.music.play" />
+                <action android:name="action.music.next" />
+                <action android:name="action.music.previous" />
+                <action android:name="action.music.stop" />
             </intent-filter>
         </receiver>
     </application>
