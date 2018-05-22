@@ -4,7 +4,7 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 
-public class Lesson implements Parcelable{
+public class Lesson implements Parcelable {
     public static final Creator<Lesson> CREATOR = new Creator<Lesson>() {
         @Override
         public Lesson createFromParcel(Parcel in) {
@@ -18,6 +18,7 @@ public class Lesson implements Parcelable{
     };
     public String id;
     public String title;
+    public String name;
     public String lesson_url;
     public String small_pic_url;
     public String big_pic_url;
@@ -25,6 +26,7 @@ public class Lesson implements Parcelable{
     public Lesson(Parcel in) {
         id = in.readString();
         title = in.readString();
+        name = in.readString();
         lesson_url = in.readString();
         small_pic_url = in.readString();
         big_pic_url = in.readString();
@@ -70,6 +72,14 @@ public class Lesson implements Parcelable{
         this.title = title;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
     @Override
     public int describeContents() {
         return 0;
@@ -79,6 +89,7 @@ public class Lesson implements Parcelable{
     public void writeToParcel(Parcel parcel, int i) {
         parcel.writeString(id);
         parcel.writeString(title);
+        parcel.writeString(name);
         parcel.writeString(lesson_url);
         parcel.writeString(small_pic_url);
         parcel.writeString(big_pic_url);
