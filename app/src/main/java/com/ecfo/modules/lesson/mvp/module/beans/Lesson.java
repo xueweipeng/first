@@ -1,15 +1,34 @@
 package com.ecfo.modules.lesson.mvp.module.beans;
 
-/**
- * Created by ofo on 2018/5/12.
- */
+import android.os.Parcel;
+import android.os.Parcelable;
 
-public class Lesson {
+
+public class Lesson implements Parcelable{
+    public static final Creator<Lesson> CREATOR = new Creator<Lesson>() {
+        @Override
+        public Lesson createFromParcel(Parcel in) {
+            return new Lesson(in);
+        }
+
+        @Override
+        public Lesson[] newArray(int size) {
+            return new Lesson[size];
+        }
+    };
     public String id;
     public String title;
     public String lesson_url;
     public String small_pic_url;
     public String big_pic_url;
+
+    public Lesson(Parcel in) {
+        id = in.readString();
+        title = in.readString();
+        lesson_url = in.readString();
+        small_pic_url = in.readString();
+        big_pic_url = in.readString();
+    }
 
     public String getLesson_url() {
         return lesson_url;
@@ -51,4 +70,17 @@ public class Lesson {
         this.title = title;
     }
 
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel parcel, int i) {
+        parcel.writeString(id);
+        parcel.writeString(title);
+        parcel.writeString(lesson_url);
+        parcel.writeString(small_pic_url);
+        parcel.writeString(big_pic_url);
+    }
 }

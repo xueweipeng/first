@@ -10,11 +10,13 @@ import android.os.IBinder;
 import android.os.Message;
 import android.os.RemoteCallbackList;
 import android.os.RemoteException;
+import android.text.TextUtils;
 
 import com.blankj.utilcode.util.LogUtils;
 import com.ecfo.IPlayer;
 import com.ecfo.IPlayerListener;
 import com.ecfo.modules.lesson.mvp.module.beans.Lesson;
+import com.ecfo.utils.GsonHelper;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -169,15 +171,15 @@ public class PlayService extends Service implements
 
     private void onActionPlay(String datum) {
         //解析datum为播放列表与当前需要播放的position
-//        if (TextUtils.isEmpty(datum)) {
-//            play();
-//            return;
-//        }
-//        MusicServiceBean musicServiceBean = GsonHelper.getGson().fromJson(datum, MusicServiceBean.class);
-//        currentPosition = musicServiceBean.position;
-//        mSong_list.clear();
-//        mSong_list.addAll(musicServiceBean.song_list);
-//        play();
+        if (TextUtils.isEmpty(datum)) {
+            play();
+            return;
+        }
+        PlayServiceBean playServiceBean = GsonHelper.getGson().fromJson(datum, PlayServiceBean.class);
+        currentPosition = playServiceBean.position;
+        lessonList.clear();
+        lessonList.addAll(playServiceBean.lessonList);
+        play();
     }
 
     public void continuePlaySong() {

@@ -19,8 +19,10 @@ import com.xw.repo.BubbleSeekBar;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
+import static com.ecfo.play.PlayService.MUSIC_ACTION_NEXT;
 import static com.ecfo.play.PlayService.MUSIC_ACTION_PAUSE;
 import static com.ecfo.play.PlayService.MUSIC_ACTION_PLAY;
+import static com.ecfo.play.PlayService.MUSIC_ACTION_PREVIOUS;
 import static com.ecfo.play.PlayService.MUSIC_ACTION_SEEK_PLAY;
 import static com.ecfo.play.PlayService.PLAYER_LISTENER_ACTION_NORMAL;
 
@@ -59,8 +61,10 @@ public class PlayActivity extends AppCompatActivity {
         public void action(int action, Message msg) throws RemoteException {
             switch (action) {
                 case MUSIC_ACTION_PLAY:
+                    ivPlayPlay.setImageResource(R.drawable.play_pause);
+                    break;
                 case MUSIC_ACTION_PAUSE:
-                    changePlayState();
+                    ivPlayPlay.setImageResource(R.drawable.play_play);
                     break;
                 case PLAYER_LISTENER_ACTION_NORMAL:
                     onSeekPlay(msg);
@@ -72,6 +76,7 @@ public class PlayActivity extends AppCompatActivity {
     private void onSeekPlay(Message msg) throws RemoteException {
         final Lesson lesson = (Lesson) mPlayerService.getCurrentSongInfo().obj;
         if (lesson == null) {
+            LogUtils.e(TAG, "current lesson is null");
             return;
         }
         int currentPosition = msg.arg1;
@@ -81,16 +86,16 @@ public class PlayActivity extends AppCompatActivity {
         tvLessonText.setText(lesson.getTitle());
     }
 
-    private void changePlayState() {
-    }
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_play);
         ButterKnife.bind(this);
         registerListener();
+        initView();
+    }
+
+    private void initView() {
         ivClose.setOnClickListener(view -> {
             Util.finishActivity(this);
         });
@@ -102,11 +107,7 @@ public class PlayActivity extends AppCompatActivity {
             @Override
             public void getProgressOnActionUp(BubbleSeekBar bubbleSeekBar, int progress, float progressFloat) {
                 LogUtils.i(TAG, "getProgressOnActionUp");
-                try {
-                    ecfoApplication.app.getMusicPlayerService().action(MUSIC_ACTION_SEEK_PLAY, Integer.toString(progress));
-                } catch (RemoteException e) {
-                    e.printStackTrace();
-                }
+                Util.performPlayAction(MUSIC_ACTION_SEEK_PLAY, Integer.toString(progress));
             }
 
             @Override
@@ -114,6 +115,27 @@ public class PlayActivity extends AppCompatActivity {
                 LogUtils.i(TAG, "getProgressOnFinally");
             }
         });
+        ivPlayNext.setOnClickListener(view -> playNext());
+        ivPlayPrevious.setOnClickListener(view -> playPrevious());
+        ivPlayPlay.setOnClickListener(view -> play());
+    }
+
+    private void play() {
+        if (PlayService.MUSIC_CURRENT_ACTION == MUSIC_ACTION_PLAY) {
+            Util.performPlayAction(MUSIC_ACTION_PAUSE, "");
+            ivPlayPlay.setImageResource(R.drawable.play_play);
+        } else if (PlayService.MUSIC_CURRENT_ACTION == MUSIC_ACTION_PAUSE) {
+            Util.performPlayAction(MUSIC_ACTION_PLAY, "");
+            ivPlayPlay.setImageResource(R.drawable.play_pause);
+        }
+    }
+
+    private void playPrevious() {
+        Util.performPlayAction(MUSIC_ACTION_PREVIOUS, "");
+    }
+
+    private void playNext() {
+        Util.performPlayAction(MUSIC_ACTION_NEXT, "");
     }
 
     public void registerListener() {
